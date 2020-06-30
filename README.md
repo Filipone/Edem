@@ -1,1 +1,1 @@
-Automation test for project Edem.by
+Automation tests for project Edem.by
