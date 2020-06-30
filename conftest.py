@@ -44,13 +44,14 @@ def browser(request):
     br.find_element_by_css_selector("input#new_order_date").click()  # Выбор дня
     br.execute_script("window.scrollBy(0, 500);")
     time.sleep(1)
-    # br.find_element_by_css_selector("a.ui-state-default.ui-state-highlight.ui-state-active").click()
-
-    # Выбор 8 марта
-    br.find_element_by_css_selector("span.ui-icon.ui-icon-circle-triangle-e").click()
-    time.sleep(1)
-    br.find_element_by_link_text('8').click()
+    br.find_element_by_css_selector("a.ui-state-default.ui-state-highlight.ui-state-active").click()
 
     yield br
     print("\nfinish")
     br.quit()
+
+"""    # Выбор 8 марта
+    br.find_element_by_css_selector("span.ui-icon.ui-icon-circle-triangle-e").click()
+    time.sleep(1)
+    br.find_element_by_link_text('8').click()"""
+

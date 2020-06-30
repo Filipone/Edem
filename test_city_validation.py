@@ -23,7 +23,6 @@ CITIES_20_BYN = [
 ]
 
 @pytest.mark.parametrize("city", CITIES_20_BYN)
-@pytest.mark.smoke
 def test_cities20byn_validation(browser, city):
     """Проверка валидации и стоимости городов из списка за 20руб"""
     input_city = browser.find_element_by_css_selector("input#locality")
@@ -80,6 +79,7 @@ CITIES_5_BYN = [
 
 
 @pytest.mark.parametrize("city", CITIES_5_BYN)
+@pytest.mark.smoke
 def test_cities5byn_validation(browser, city):
     """Проверка валидации и стоимости городов из списка за 5руб"""
     input_city = browser.find_element_by_css_selector("input#locality")
@@ -97,4 +97,4 @@ def test_cities5byn_validation(browser, city):
         assert "Город, посёлок" in browser.find_element_by_css_selector(
             "input#locality + span.fields__text").text, f"Валидацию не прошел город: {city}"
     finally:
-        assert "5,00" in delivary_prise, f"Стоимость доставки у города {city} не верна"
+        assert "бесплатно" in delivary_prise, f"Стоимость доставки у города {city} не верна"
