@@ -50,8 +50,10 @@ def browser(request):
     print("\nfinish")
     br.quit()
 
-"""    # Выбор 8 марта
+"""
+    # Выбор 8 марта
     br.find_element_by_css_selector("span.ui-icon.ui-icon-circle-triangle-e").click()
     time.sleep(1)
-    br.find_element_by_link_text('8').click()"""
+    br.find_element_by_link_text('8').click()
+"""
 

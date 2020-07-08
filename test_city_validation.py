@@ -1,6 +1,7 @@
 import time
 import pytest
 
+
 CITIES_20_BYN = [
     "Белая Лужа", "Глинище", pytest.param("Хрень", marks=pytest.mark.xfail),
     "Прудок", "Красный Октябрь", "Новосёлки", "Новосёлки", "Старая Мётча",
@@ -29,17 +30,17 @@ def test_cities20byn_validation(browser, city):
     input_city.clear()
     input_city.send_keys(city)
 
-    otvet = browser.find_element_by_css_selector("input#locality + span.fields__text")
-    otvet.click()
+    response = browser.find_element_by_css_selector("input#locality + span.fields__text")
+    response.click()
     time.sleep(1)
-    delivary_prise = browser.find_element_by_css_selector("span.js_delivery").text
+    delivery_prise = browser.find_element_by_css_selector("span.js_delivery").text
 
     print(city)
     assert "Город, посёлок" in browser.find_element_by_css_selector(
         "input#locality + span.fields__text").text, f"Валидацию не прошел город: {city}"
 
-    print(delivary_prise)
-    assert "20,00" in delivary_prise, "Стоимсоть доставки не верна"
+    print(delivery_prise)
+    assert "20,00" in delivery_prise, "Стоимсоть доставки не верна"
 
 
 CITIES_10_BYN = [
@@ -48,7 +49,7 @@ CITIES_10_BYN = [
     "Пересады", "Погодица", "Подберезье", "Светлая Роща", "Стайки", "Студёнка",
     "Упиревичи", "Лещины", "Дубени", "Селище", "Любатовщина", "Прудище", "Брусы",
     "Горелица", "Залесье", "Струпень", "Ельница", "Верески", "Круглое", "Селитренка",
-    "Липки", "Стаи", "Проходы", "Проходы"
+    "Липки", "Стаи", "Проходы"
 ]
 
 
@@ -59,17 +60,17 @@ def test_cities10byn_validation(browser, city):
     input_city.clear()
     input_city.send_keys(city)
 
-    otvet = browser.find_element_by_css_selector("input#locality + span.fields__text")
-    otvet.click()
+    response = browser.find_element_by_css_selector("input#locality + span.fields__text")
+    response.click()
     time.sleep(1)
-    delivary_prise = browser.find_element_by_css_selector("span.js_delivery").text
+    delivery_prise = browser.find_element_by_css_selector("span.js_delivery").text
 
     print(city)
     assert "Город, посёлок" in browser.find_element_by_css_selector(
         "input#locality + span.fields__text").text, f"Валидацию не прошел город: {city}"
 
-    print(delivary_prise)
-    assert "10,00" in delivary_prise, "Стоимсоть доставки не верна"
+    print(delivery_prise)
+    assert "10,00" in delivery_prise, "Стоимсоть доставки не верна"
 
 
 CITIES_5_BYN = [
@@ -86,15 +87,15 @@ def test_cities5byn_validation(browser, city):
     input_city.clear()
     input_city.send_keys(city)
 
-    otvet = browser.find_element_by_css_selector("input#locality + span.fields__text")
-    otvet.click()
+    response = browser.find_element_by_css_selector("input#locality + span.fields__text")
+    response.click()
     time.sleep(1)
-    delivary_prise = browser.find_element_by_css_selector("span.js_delivery").text
+    delivery_prise = browser.find_element_by_css_selector("span.js_delivery").text
 
     try:
         print(city)
-        print(delivary_prise)
+        print(delivery_prise)
         assert "Город, посёлок" in browser.find_element_by_css_selector(
             "input#locality + span.fields__text").text, f"Валидацию не прошел город: {city}"
     finally:
-        assert "бесплатно" in delivary_prise, f"Стоимость доставки у города {city} не верна"
+        assert "бесплатно" in delivery_prise, f"Стоимость доставки у города {city} не верна"
